@@ -9,9 +9,9 @@
 <body>
 <h1>Member Login</h1>
 <form action="./memberLogin.member" method="post">
-ID:<input type="text" name="id">
-PW:<input type="password" name="pw">
-<button>Login</button>
+<p>ID:<input type="text" name="id"></p>
+<p>PW:<input type="password" name="pw"></p>
+<button>Click</button>
 
 </form>
 </body>

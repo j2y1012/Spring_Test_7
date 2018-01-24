@@ -3,23 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="MemberMapper">
+  <select id="memberIdCheck" parameterType="string" resultType="MemberDTO">
+  select * from member where id=#{id}
+  </select>
  
-  <insert id="memberJoin">
+  <insert id="memberJoin" parameterType="MemberDTO">
   insert into member values(#{id},#{pw},#{name},#{email},#{phone},#{age},#{job},#{fname},#{oname})
   </insert>
   
-  <select id="memberLogin" resultType="com.iu.member.MemberDTO" parameterType="com.iu.member.MemberDTO">
+  <select id="memberLogin" resultType="MemberDTO" parameterType="MemberDTO">
   select * from member where id=#{id} and pw=#{pw}
   </select>
   
   
  
-  <update id="memberUpdate" >
-  update member set name=#{name},fname=#{fname} oname=#{oname}
+  <update id="memberUpdate" parameterType="MemberDTO" >
+  update member set pw=#{pw}, name=#{name}, email=#{email},phone=#{phone},age=#{age},job=#{job},fname=#{fname},oname=#{oname} where id=#{id}
  </update>
   
   
-  <delete id="memberDelete" >
+  <delete id="memberDelete" parameterType="MemberDTO">
   delete member where id=#{id}
   </delete>
   

@@ -11,7 +11,7 @@ import com.iu.util.ListData;
 import com.iu.util.PageMaker;
 
 @Service
-public class QnaService2 implements BoardService {
+public class QnaService implements BoardService {
 
 	@Autowired
 	private QnaDAO qnaDAO;

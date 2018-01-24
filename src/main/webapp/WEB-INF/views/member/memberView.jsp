@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>My Page</h1>
+<p><img src="../resources/upload/${member.fname }"></p>
+<p>ID:${member.id }</p>
+<p>NAME:${member.name }</p>
+<p>Age:${member.age }</p>
+<a href="./memberUpdate">Update</a>
+<a href="./memberDelete">Delete</a>
 </body>
 </html>
