@@ -26,6 +26,7 @@
 </c:if>
 <a href="./notice/noticeList">Notice</a>
 <a href="./qna/qnaList">Qna</a>
+<a href="./transfer">Transport</a>
 </body>
 </html>
 

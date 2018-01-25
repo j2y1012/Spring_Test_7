@@ -27,7 +27,7 @@
 	<h1>Update Form</h1>
 	<form id="frm" action="./memberUpdate" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${member.id}">
-		<p>Pw : <input type="password" value="${member.pw}"> </p>
+		<p>Pw : <input type="password" name="pw" value="${member.pw}"> </p>
 		<p>Name : <input type="text" name="name" value="${member.name}"></p>
 		<p>Email : <input type="text" name="email" value="${member.email}"></p>
 		<p>Phone : <input type="text" name="phone" value="${member.phone}"></p>
