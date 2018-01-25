@@ -34,7 +34,22 @@ public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 	
 	return memberDAO.MemberLogin(memberDTO);
 }
-public int memberUpdate(MemberDTO memberDTO)throws Exception{
+public int memberUpdate(MemberDTO memberDTO,MultipartFile file,HttpSession session)throws Exception{
+	if(file !=null){
+		String filePath=session.getServletContext().getRealPath("resources/upload");
+		File f = new File(filePath);
+		if(!f.exists()){
+			f.mkdirs();
+		}
+		FileSaver fs = new FileSaver();
+		String fileName =fs.saver(file, filePath);
+		memberDTO.setFname(fileName);
+		memberDTO.setOname(file.getOriginalFilename());;
+	}else{
+		memberDTO.setFname(((MemberDTO)session.getAttribute("member")).getFname());
+		memberDTO.setOname(((MemberDTO)session.getAttribute("member")).getOname());
+	}
+		
 	return memberDAO.memberUpdate(memberDTO);
 	
 }

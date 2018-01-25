@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -67,7 +68,19 @@ public void memberUpdate(){
 	
 }
 @RequestMapping(value="memberUpdate",method=RequestMethod.POST)
-public void memberUpdate(MemberDTO memberDTO){
+public ModelAndView memberUpdate(MemberDTO memberDTO,MultipartFile file,HttpSession session)throws Exception{
+	int result=memberService.memberUpdate(memberDTO,file,session);
+	String message="Update Fail";
+	if(result>0){
+	session.setAttribute("member", memberDTO);
+	message="Update Success";
+	}
+	ModelAndView mv = new ModelAndView();
+	mv.addObject("message",message);
+	mv.addObject("path", "./memberView");
+	mv.setViewName("common/result");
+	return mv;
+	
 }
 @RequestMapping(value="memberDelete",method=RequestMethod.GET)
 public String memberDelete(HttpSession session,RedirectAttributes rd)throws Exception{
